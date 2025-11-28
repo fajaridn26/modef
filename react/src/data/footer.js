@@ -4,16 +4,16 @@ export const footer = {
     src: "./logo.png",
     alt: "logo",
   },
-  links: [
-    {
-      label: "Privacy Policy",
-      href: "#",
-    },
-    {
-      label: "Terms of Service",
-      href: "#",
-    },
-  ],
+  // links: [
+  //   {
+  //     label: "Privacy Policy",
+  //     href: "#",
+  //   },
+  //   {
+  //     label: "Terms of Service",
+  //     href: "#",
+  //   },
+  // ],
   social: [
     {
       icon: "tabler:brand-x",

@@ -17,27 +17,35 @@ export function Footer({ copyright, logo, links, social, ...rest }) {
             alt="logo"
             className="h-10 w-auto opacity-70 hover:opacity-100 dark:invert"
           />
-          <div className="flex flex-row gap-4 text-sm">
+          {/* <div className="flex flex-row gap-4 text-sm">
             {links.map((link, index) => (
               <Link href={link.href} key={index}>
                 {link.label}
               </Link>
             ))}
-          </div>
+          </div> */}
           <SocialLinks links={social} />
         </div>
 
-        <div className="border-t border-base py-4 text-center flex justify-between">
+        <div className="border-t border-base py-4 flex justify-between">
           <p className="text-sm">&copy; {copyright}</p>
-          <a href="https://bansal.io" className="text-sm text-muted italic">
+          <div className="flex justify-between gap-4">
+            <Link className="text-sm" href="#">
+              Privacy Policy
+            </Link>
+            <Link className="text-sm" href="#">
+              Tems of Service
+            </Link>
+          </div>
+          {/* <a href="https://bansal.io" className="text-sm text-muted italic">
             Themed by Bansal
-          </a>
-          <p className="text-sm">
+          </a> */}
+          {/* <p className="text-sm">
             Distributed by{" "}
             <a href="https://themewagon.com" className="text-sm">
               ThemeWagon
             </a>
-          </p>
+          </p> */}
         </div>
       </div>
     </footer>

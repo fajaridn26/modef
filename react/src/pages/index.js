@@ -24,8 +24,8 @@ import {
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import dynamic from "next/dynamic";
+import { motion } from "motion/react";
 
 export default function Home() {
   const [projects, setProjects] = useState([]);
@@ -36,7 +36,7 @@ export default function Home() {
     const url = "http://localhost:8000/api/projects/";
     axios.get(url).then((res) => {
       setProjects(res.data.data);
-      console.log(res.data.data);
+      // console.log(res.data.data);
     });
   };
 
@@ -62,27 +62,31 @@ export default function Home() {
       />
       <HeroSection
         id="home"
-        badge={{
-          href: "#",
-          icon: "tabler:arrow-right",
-          label: "😻 Learn What's New",
-        }}
+        // badge={
+        //   {
+        //     href: "#",
+        //     icon: "tabler:arrow-right",
+        //     label: "SMKN 8 Surabaya",
+        //   }
+        // }
         title="Modef"
         description="Koleksi desain busana penuh estetika dan inovasi dari siswa SMKN 8 Surabaya. Modef menghadirkan rangkaian portfolio yang menampilkan kreativitas, dan gaya yang siap bersaing di industri fashion."
-        buttons={[
-          {
-            href: "#",
-            label: "Lihat Semua Portfolio",
-            color: "dark",
-          },
-          // {
-          //   href: "#",
-          //   label: "Learn More",
-          //   color: "transparent",
-          //   variant: "link",
-          //   icon: "tabler:arrow-right",
-          // },
-        ]}
+        buttons={
+          [
+            // {
+            //   href: "#",
+            //   label: "Lihat Semua Portfolio",
+            //   color: "dark",
+            // },
+            // {
+            //   href: "#",
+            //   label: "Learn More",
+            //   color: "transparent",
+            //   variant: "link",
+            //   icon: "tabler:arrow-right",
+            // },
+          ]
+        }
         // image={{
         //   src: "./tablet-mockup.png",
         //   alt: "Product Screenshot on Tablet",
@@ -92,9 +96,15 @@ export default function Home() {
         // clients={clients}
       />
 
-      <div className="container mx-auto grid grid-cols-1 md:grid-cols-4 sm:grid-cols-2 gap-4">
+      <div className="container mx-auto grid grid-cols-1 xl:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-4">
         {projects.map((item) => (
-          <div key={item.id} className="mx-auto max-w-sm mb-6">
+          <motion.div
+            key={item.id}
+            className="mx-auto max-w-sm mb-6"
+            animate={{ y: 0, opacity: 1 }}
+            initial={{ y: 100, opacity: 0 }}
+            transition={{ duration: 0.8 }}
+          >
             <div className="group relative overflow-hidden">
               <Link href={`/${item.slug}`}>
                 <DynamycImage
@@ -116,11 +126,11 @@ export default function Home() {
               </div>
             </div>
             <div className="mt-4 text-sm font-semibold">{item.user.nama}</div>
-          </div>
+          </motion.div>
         ))}
       </div>
 
-      <FeatureSection
+      {/* <FeatureSection
         id="features"
         title="Discover Our Amazing Features"
         description="Explore the wide range of powerful features that our product offers. From advanced analytics to seamless integrations, we have everything you need to succeed."
@@ -192,7 +202,7 @@ export default function Home() {
           },
         ]}
         faqs={faqs}
-      />
+      /> */}
       {/* <CtaSection
         title="Ready to get started?"
         description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis similique"

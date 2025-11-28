@@ -2,6 +2,7 @@
 import { Badge, Button } from "#/base";
 import { Brands } from "#/Brands";
 import { cn } from "@/lib/utils";
+import { motion } from "motion/react";
 
 export function HeroSection({
   badge,
@@ -16,19 +17,39 @@ export function HeroSection({
   return (
     <section {...rest}>
       <div className="container px-4 mx-auto">
-        <div className="flex flex-col justify-center items-center min-h-[500px]">
-          <div className="flex flex-col justify-center items-center gap-4 text-center max-w-3xl mx-auto pb-12">
+        <div className="flex flex-col justify-center items-center py-24">
+          <div className="flex flex-col justify-center items-center gap-4 text-center max-w-3xl mx-auto">
             {/* <Badge {...badge} /> */}
-            <h1 className="text-6xl font-display font-semibold title-gradient">
+            <motion.h1
+              className="text-6xl font-display font-semibold title-gradient"
+              animate={{ y: 0, opacity: 1 }}
+              initial={{ y: -100, opacity: 0 }}
+              transition={{ duration: 0.8 }}
+            >
               {title}
-            </h1>
-            <p className="text-xl">{description}</p>
+            </motion.h1>
+            <motion.p
+              className="text-xl"
+              animate={{ y: 0, opacity: 1 }}
+              initial={{ y: 100, opacity: 0 }}
+              transition={{ duration: 0.8 }}
+            >
+              {description}
+            </motion.p>
             {buttons.length > 0 && (
-              <div className="flex justify-center items-center gap-4 mt-8">
+              <motion.div
+                className="flex justify-center items-center gap-4 mt-8"
+                initial={{ opacity: 0, scale: 0 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{
+                  duration: 1.0,
+                  scale: { type: "spring", visualDuration: 0.4, bounce: 0.5 },
+                }}
+              >
                 {buttons.map((button, index) => (
                   <Button key={index} {...button} />
                 ))}
-              </div>
+              </motion.div>
             )}
           </div>
           {/* <div>

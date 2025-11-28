@@ -9,8 +9,7 @@ import { useRouter } from "next/router";
 import { Button } from "@/components/base";
 import Link from "next/link";
 import dynamic from "next/dynamic";
-import { ThreeDots } from "react-loader-spinner";
-
+import { motion } from "motion/react";
 export default function Home() {
   const router = useRouter();
   const { slug } = router.query;
@@ -30,15 +29,8 @@ export default function Home() {
 
   if (!projects)
     return (
-      <div className="flex justify-center items-center min-h-screen">
-        <ThreeDots
-          visible={true}
-          height="80"
-          width="80"
-          color="#083b94ff"
-          radius="9"
-          ariaLabel="three-dots-loading"
-        />
+      <div className="flex items-center justify-center min-h-screen">
+        Loading...
       </div>
     );
 
@@ -55,28 +47,64 @@ export default function Home() {
 
       <div className="container mx-auto py-24">
         {/* <div className="fixed container bg-base-50 z-10"> */}
-        <div className="font-semibold text-2xl text-gray-800 mb-6">
+        <motion.div
+          className="font-semibold text-2xl text-gray-800 mb-6"
+          animate={{ y: 0, opacity: 1 }}
+          initial={{ y: 100, opacity: 0 }}
+          transition={{ duration: 0.8 }}
+        >
           {projects.nama_project}
-        </div>
+        </motion.div>
         <div className="flex justify-between items-center mb-8">
           <div>
-            <div className="font-semibold text-gray-800 text-md">
+            <motion.div
+              className="font-semibold text-gray-800 text-md"
+              animate={{ x: 0, opacity: 1 }}
+              initial={{ x: -100, opacity: 0 }}
+              transition={{ duration: 0.8 }}
+            >
               {projects.user.nama}
-            </div>
-            <p className="text-sm text-light mt-2">{projects.user.email}</p>
+            </motion.div>
+            <motion.p
+              className="text-sm text-light mt-2"
+              animate={{ x: 0, opacity: 1 }}
+              initial={{ x: -100, opacity: 0 }}
+              transition={{ duration: 0.8 }}
+            >
+              {projects.user.email}
+            </motion.p>
           </div>
-          <Link href={`https://wa.me/${projects.user.no_whatsapp}`}>
-            <Button label={"Hubungi Via Whatsapp"}></Button>
-          </Link>
+          <motion.div
+            animate={{ x: 0, opacity: 1 }}
+            initial={{ x: 100, opacity: 0 }}
+            transition={{ duration: 0.8 }}
+            // initial={{ opacity: 0, scale: 0 }}
+            // animate={{ opacity: 1, scale: 1 }}
+            // transition={{
+            //   duration: 1.0,
+            //   scale: { type: "spring", visualDuration: 0.4, bounce: 0.5 },
+            // }}
+          >
+            <Link href={`https://wa.me/${projects.user.no_whatsapp}`}>
+              <Button label={"Hubungi Via Whatsapp"}></Button>
+            </Link>
+          </motion.div>
         </div>
         {/* </div> */}
-        <DynamicImage
-          width={1500}
-          height={1000}
-          src={projects.image_url}
-          alt={projects.nama_project}
-          className=""
-        />
+        <motion.div
+          animate={{ y: 0, opacity: 1 }}
+          initial={{ y: 100, opacity: 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          {" "}
+          <DynamicImage
+            width={1500}
+            height={1000}
+            src={projects.image_url}
+            alt={projects.nama_project}
+            className=""
+          />
+        </motion.div>
       </div>
 
       <Footer
