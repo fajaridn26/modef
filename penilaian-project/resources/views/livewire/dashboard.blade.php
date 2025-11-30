@@ -89,7 +89,7 @@
                 </div>
             @endif
 
-            @if (auth()->user()->role == 'Super Admin' || auth()->user()->role == 'Guru')
+            {{-- @if (auth()->user()->role == 'Super Admin' || auth()->user()->role == 'Guru')
                 <div class="col">
                     <div class="card">
                         <h5 class="card-header">Belum Dinilai</h5>
@@ -178,9 +178,9 @@
                         </div>
                     </div>
                 </div>
-            @endif
+            @endif --}}
 
-            <div class="modal fade" id="modalLihatFile" tabindex="-1" aria-hidden="true" wire:ignore.self>
+            {{-- <div class="modal fade" id="modalLihatFile" tabindex="-1" aria-hidden="true" wire:ignore.self>
                 <div class="modal-dialog modal-xl" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -249,7 +249,7 @@
                         </div>
                     </div>
                 </div>
-            </form>
+            </form> --}}
 
             {{-- </div> --}}
             <!-- Total Revenue -->

@@ -35,34 +35,34 @@ class Dashboard extends Component
         // $this->listProject = Project::with('user')->where('nilai', 0)->get();
     }
 
-    public function edit($id){
-        $project = Project::with('user')->findOrFail($id);
+    // public function edit($id){
+    //     $project = Project::with('user')->findOrFail($id);
 
-        $this->project_id = $project->id;
-        $this->nama = $project->user->nama;
-        $this->project_id = $project->id;
-        $this->nama_project = $project->nama_project;
-        $this->deskripsi_project = $project->deskripsi_project;
-        $this->nilai = $project->nilai;
-    }
+    //     $this->project_id = $project->id;
+    //     $this->nama = $project->user->nama;
+    //     $this->project_id = $project->id;
+    //     $this->nama_project = $project->nama_project;
+    //     $this->deskripsi_project = $project->deskripsi_project;
+    //     $this->nilai = $project->nilai;
+    // }
 
-     public function update(){
-        // $this->validate();
+    //  public function update(){
+    //     // $this->validate();
 
-        $project = Project::findOrFail($this->project_id);
-        $project->nilai = $this->nilai;
+    //     $project = Project::findOrFail($this->project_id);
+    //     $project->nilai = $this->nilai;
 
-        $project->save();
-        // session()->flash('penilaianSuccess', 'Project berhasil dinilai!');
-        $this->penilaianSuccess = 'Project berhasil dinilai!';
-        $this->dispatch('closeModalEdit');
-    }
+    //     $project->save();
+    //     // session()->flash('penilaianSuccess', 'Project berhasil dinilai!');
+    //     $this->penilaianSuccess = 'Project berhasil dinilai!';
+    //     $this->dispatch('closeModalEdit');
+    // }
 
-    public function lihatFile($id){
-        $user = Project::with('user')->findOrFail($id);
+    // public function lihatFile($id){
+    //     $user = Project::with('user')->findOrFail($id);
 
-        $this->user_id = $user->id_user;
-        $this->nama_project = $user->nama_project;
-        $this->selectedProject = Project::find($id);
-    }
+    //     $this->user_id = $user->id_user;
+    //     $this->nama_project = $user->nama_project;
+    //     $this->selectedProject = Project::find($id);
+    // }
 }
