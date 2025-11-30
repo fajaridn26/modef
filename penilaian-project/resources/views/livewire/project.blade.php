@@ -36,6 +36,8 @@
                                     <label for="file_project" class="form-label">File Project</label>
                                     <input type="file" id="file_project" wire:model="file_project"
                                         class="form-control" required />
+                                    <p class="text-muted mt-2">Allowed JPG or PNG. Max size of 1MB</p>
+
                                 </div>
                             </div>
                         </div>

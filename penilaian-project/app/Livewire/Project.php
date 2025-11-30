@@ -31,7 +31,7 @@ class Project extends Component
     protected $rules = [
         'nama_project' => 'required|string',
         'deskripsi_project' => 'required|string',
-        'file_project' => 'required|image|max:3024',
+        'file_project' => 'required|image|max:1024',
     ];
     public function render()
     {
