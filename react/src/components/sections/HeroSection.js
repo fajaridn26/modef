@@ -17,9 +17,9 @@ export function HeroSection({
   return (
     <section {...rest}>
       <div className="container px-4 mx-auto">
-        <div className="flex flex-col justify-center items-center py-24">
-          <div className="flex flex-col justify-center items-center gap-4 text-center max-w-3xl mx-auto">
-            {/* <Badge {...badge} /> */}
+        <div className="flex flex-col justify-center items-center">
+          <div className="flex flex-col justify-center items-center gap-4 text-center max-w-3xl mx-auto py-28">
+            <Badge {...badge} />
             <motion.h1
               className="text-6xl font-display font-semibold title-gradient"
               animate={{ y: 0, opacity: 1 }}
@@ -29,7 +29,7 @@ export function HeroSection({
               {title}
             </motion.h1>
             <motion.p
-              className="text-xl"
+              className="text-xl mt-4"
               animate={{ y: 0, opacity: 1 }}
               initial={{ y: 100, opacity: 0 }}
               transition={{ duration: 0.8 }}

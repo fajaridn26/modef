@@ -25,6 +25,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::apiResource('/users', UserController::class);
-Route::apiResource('/projects', ProjectController::class);
-Route::apiResource('/projects/{$id}', ProjectController::class);
+Route::get('/projects', [ProjectController::class, 'index']);
+Route::get('/projects/search', [ProjectController::class, 'search']);
+Route::get('/projects/{slug}', [ProjectController::class, 'show']);
+// Route::apiResource('/projects', ProjectController::class);
+// Route::apiResource('/projects/search', ProjectController::class);
+// Route::apiResource('/projects/{$id}', ProjectController::class);
 

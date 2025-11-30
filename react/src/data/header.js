@@ -13,14 +13,14 @@ export const header = {
       label: "Pricing",
       href: "#pricing",
     },
-    {
-      label: "Testimonials",
-      href: "#testimonials",
-    },
-    {
-      label: "FAQs",
-      href: "#faqs",
-    },
+    // {
+    //   label: "Testimonials",
+    //   href: "#testimonials",
+    // },
+    // {
+    //   label: "FAQs",
+    //   href: "#faqs",
+    // },
   ],
   // buttons: [
   //   {

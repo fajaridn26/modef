@@ -14,7 +14,6 @@ export default function DynamycImage({
       {loading && (
         <div className="absolute inset-0 bg-gray-200 animate-pulse rounded md" />
       )}
-
       <Image
         src={src}
         alt={alt}

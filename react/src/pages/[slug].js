@@ -45,7 +45,7 @@ export default function Home() {
         buttons={header.buttons}
       />
 
-      <div className="container mx-auto py-24">
+      <div className="container mx-auto py-28">
         {/* <div className="fixed container bg-base-50 z-10"> */}
         <motion.div
           className="font-semibold text-2xl text-gray-800 mb-6"
