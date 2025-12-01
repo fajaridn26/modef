@@ -25,26 +25,56 @@ class PenilaianProject extends Component
     public $deskripsi_project = '';
     public $nilai = '';
     public $file_project;
-    public $orderDesc=true;
+    public $totalProject;
+    public $belumDinilai;
+    public $sudahDinilai;
+    public $filter = 'semua';
+    public $orderDesc = true;
     public $selectedProject;
     public $penilaianSuccess = null;
-    
+
     use WithPagination;
 
     public function render()
     {
+
+        $totalProject = Project::all()->count();
+        $belumDinilai = Project::where('nilai', 0)->count();
+        $sudahDinilai = Project::where('nilai', '>', 0)->count();
+
+        $this->totalProject = $totalProject;
+        $this->belumDinilai = $belumDinilai;
+        $this->sudahDinilai = $sudahDinilai;
+
+        $query = Project::with('user')
+            ->where(function ($q) {
+                $q->whereRAW('LOWER(nama_project) LIKE ?', ['%' . strtolower($this->search) . '%'])
+                    ->orWhereHas('user', function ($q) {
+                        $q->whereRAW('LOWER(nama) LIKE ?', ['%' . strtolower($this->search) . '%']);
+                    });
+            });
+
+        if ($this->filter === 'belumDinilai') {
+            $query->where('nilai', 0);
+        } elseif ($this->filter === 'sudahDinilai') {
+            $query->where('nilai', '>', 0);
+        }
+
         return view('livewire.penilaian-project', [
-            'listProject' => Project::with('user')
-                ->whereRAW('LOWER(nama_project) LIKE ?', ['%' . strtolower($this->search) . '%'])
-                ->orWhereHas('user', function($q){
-                    $q->whereRAW('LOWER(nama) LIKE ?', ['%' . strtolower($this->search) . '%']);
-                })
-                ->orderBy('id', $this->orderDesc ? 'desc' : 'asc')
-                ->paginate($this->perPage)
+            'totalProject' => $totalProject,
+            'belumDinilai' => $belumDinilai,
+            'sudahDinilai' => $sudahDinilai,
+            'listProject' => $query->orderBy('id', $this->orderDesc ? 'desc' : 'asc')->paginate($this->perPage)
         ]);
     }
 
-    public function edit($id){
+    public function setFilter($value)
+    {
+        $this->filter = $value;
+    }
+
+    public function edit($id)
+    {
         $project = Project::with('user')->findOrFail($id);
 
         $this->project_id = $project->id;
@@ -55,7 +85,8 @@ class PenilaianProject extends Component
         $this->nilai = $project->nilai;
     }
 
-     public function update(){
+    public function update()
+    {
         // $this->validate();
 
         $project = Project::findOrFail($this->project_id);
@@ -67,7 +98,8 @@ class PenilaianProject extends Component
         $this->dispatch('closeModalEdit');
     }
 
-    public function lihatFile($id){
+    public function lihatFile($id)
+    {
         $user = Project::with('user')->findOrFail($id);
 
         $this->user_id = $user->id_user;
@@ -75,9 +107,8 @@ class PenilaianProject extends Component
         $this->selectedProject = Project::find($id);
     }
 
-    public function export(){
+    public function export()
+    {
         return Excel::download(new ProjectsExport, 'Penialain Project.xlsx');
     }
-
-     
 }

@@ -1,11 +1,22 @@
 <div>
     <div class="container-xxl flex-grow-1 container-p-y">
         <h4 class="fw-bold py-3 mb-4">Penilaian Project</h4>
-        <form wire:submit="export">
-            <button type="submit" class="btn btn-success">
-                <span class="tf-icons bx bx-file"></span>&nbsp; Export Excel
-            </button>
-        </form>
+
+
+        <nav class="col d-flex justify-content-start">
+            <div class="p-2 bg-light shadow-lg d-inline-flex rounded-3 gap-2">
+                <a wire:click="setFilter('semua')"
+                    class="{{ $filter === 'semua' ? 'btn btn-primary text-white' : 'btn btn-light' }} rounded-2">Semua
+                    <span class="bg-light text-primary py-1 px-2 rounded-1 ms-2">{{ $totalProject }}</span></a>
+                <a wire:click="setFilter('belumDinilai')"
+                    class="{{ $filter === 'belumDinilai' ? 'btn btn-primary text-white' : 'btn btn-light' }} rounded-2">Belum
+                    Dinilai <span class="bg-light text-primary py-1 px-2 rounded-1 ms-2">{{ $belumDinilai }}</span></a>
+                <a wire:click="setFilter('sudahDinilai')"
+                    class="{{ $filter === 'sudahDinilai' ? 'btn btn-primary text-white' : 'btn btn-light' }} rounded-2">Sudah
+                    Dinilai <span class="bg-light text-primary py-1 px-2 rounded-1 ms-2">{{ $sudahDinilai }}</span></a>
+            </div>
+        </nav>
+
 
         <!-- Responsive Table -->
         <div class="card mt-3">
@@ -15,11 +26,17 @@
                     {{ $penilaianSuccess }}
                 </div>
             @endif
-            <div class="mt-1 mb-3 ms-4">
+            <div
+                class="mt-1 mb-3 ms-4 me-4 d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center">
                 <div class="col-10 col-md-3">
                     <input class="form-control" type="search" placeholder="Search ..."
                         wire:model.live.debounce.300ms="search" />
                 </div>
+                <form wire:submit="export" class="mt-2 mt-md-0">
+                    <button type="submit" class="btn btn-success">
+                        <span class="tf-icons bx bx-file"></span>&nbsp; Export Excel
+                    </button>
+                </form>
             </div>
             <div class="table-responsive text-nowrap">
                 <table class="table">
@@ -41,7 +58,8 @@
                                 <td>{{ $project->user->nama }}</td>
                                 <td>{{ $project->user->kelas }} - {{ $project->user->jurusan }}</td>
                                 <td>{{ $project->nama_project }}</td>
-                                <td><a href="#" wire:click="lihatFile({{ $project->id }}) "data-bs-toggle="modal"
+                                <td><a href="#"
+                                        wire:click="lihatFile({{ $project->id }}) "data-bs-toggle="modal"
                                         data-bs-target="#modalLihatFile">Lihat
                                     </a></td>
                                 @if ($project->nilai > 69)
