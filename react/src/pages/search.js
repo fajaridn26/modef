@@ -86,9 +86,14 @@ export default function Home() {
         ))}
       </div>
       {projects.length === 0 && (
-        <div className="flex justify-center items-center text-xl font-semibold mb-28">
+        <motion.div
+          className="flex justify-center items-center text-xl font-semibold mb-28"
+          animate={{ y: 0, opacity: 1 }}
+          initial={{ y: 100, opacity: 0 }}
+          transition={{ duration: 1.2 }}
+        >
           Tidak ada Portfolio.
-        </div>
+        </motion.div>
       )}
 
       <Footer
