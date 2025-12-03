@@ -21,15 +21,15 @@ export const footer = {
     },
     {
       icon: "tabler:brand-instagram",
-      url: "#",
+      url: "https://www.instagram.com/smekdels/",
     },
-    {
-      icon: "tabler:brand-youtube",
-      url: "#",
-    },
-    {
-      icon: "tabler:brand-linkedin",
-      url: "#",
-    },
+    // {
+    //   icon: "tabler:brand-youtube",
+    //   url: "#",
+    // },
+    // {
+    //   icon: "tabler:brand-linkedin",
+    //   url: "#",
+    // },
   ],
 };

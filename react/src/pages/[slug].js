@@ -10,6 +10,8 @@ import { Button } from "@/components/base";
 import Link from "next/link";
 import dynamic from "next/dynamic";
 import { motion } from "motion/react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEnvelope } from "@fortawesome/free-regular-svg-icons";
 export default function Home() {
   const router = useRouter();
   const { slug } = router.query;
@@ -46,7 +48,6 @@ export default function Home() {
       />
 
       <div className="container mx-auto py-28">
-        {/* <div className="fixed container bg-base-50 z-10"> */}
         <motion.div
           className="font-semibold text-2xl text-gray-800 mb-6"
           animate={{ y: 0, opacity: 1 }}
@@ -65,32 +66,26 @@ export default function Home() {
             >
               {projects.user.nama}
             </motion.div>
-            <motion.p
-              className="text-sm text-light mt-2"
+            <motion.div
+              className="flex mt-2"
               animate={{ x: 0, opacity: 1 }}
               initial={{ x: -100, opacity: 0 }}
               transition={{ duration: 0.8 }}
             >
-              {projects.user.email}
-            </motion.p>
+              <FontAwesomeIcon className="fa-lg" icon={faEnvelope} />
+              <p className="text-sm text-light">{projects.user.email}</p>
+            </motion.div>
           </div>
           <motion.div
             animate={{ x: 0, opacity: 1 }}
             initial={{ x: 100, opacity: 0 }}
             transition={{ duration: 0.8 }}
-            // initial={{ opacity: 0, scale: 0 }}
-            // animate={{ opacity: 1, scale: 1 }}
-            // transition={{
-            //   duration: 1.0,
-            //   scale: { type: "spring", visualDuration: 0.4, bounce: 0.5 },
-            // }}
           >
             <Link href={`https://wa.me/${projects.user.no_whatsapp}`}>
               <Button label={"Hubungi Via Whatsapp"}></Button>
             </Link>
           </motion.div>
         </div>
-        {/* </div> */}
         <motion.div
           animate={{ y: 0, opacity: 1 }}
           initial={{ y: 100, opacity: 0 }}

@@ -27,11 +27,12 @@ import Link from "next/link";
 import dynamic from "next/dynamic";
 import { motion } from "motion/react";
 import { useRouter } from "next/router";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye } from "@fortawesome/free-regular-svg-icons";
 
 export default function Home() {
   const router = useRouter();
   const [projects, setProjects] = useState([]);
-  const [search, setSearch] = useState("");
   const DynamicImage = dynamic(() => import("../components/DynamicImage"), {
     ssr: false,
   });
@@ -54,65 +55,12 @@ export default function Home() {
   //     project.user.nama.toLowerCase().includes(search.toLowerCase())
   // );
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (!search.trim()) return;
-
-    router.push(`/search?keyword=${encodeURIComponent(search)}`);
-  };
-
   useEffect(() => {
     getProjects();
   }, []);
 
   return (
     <>
-      {/* <form className="container mx-auto py-20" onSubmit={handleSubmit}>
-        <label
-          for="search"
-          className="block mb-2.5 text-sm font-medium text-heading sr-only "
-        >
-          Search
-        </label>
-        <div className="fixed container w-full h-24 bg-base-50 border-bottom-0 z-20">
-          <div className="fixed container w-full z-50">
-            <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-              <svg
-                className="w-4 h-4 text-body"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                fill="none"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke="currentColor"
-                  strokeLinecap="round"
-                  strokeWidth="2"
-                  d="m21 21-3.5-3.5M17 10a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z"
-                />
-              </svg>
-            </div>
-            <input
-              type="search"
-              id="search"
-              className="block w-full h-14 p-3 ps-9 bg-light border border-light rounded-lg text-heading text-sm focus:outline-none focus:border-indigo-500 shadow-xs placeholder:text-body"
-              placeholder="Search"
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-              required
-            />
-            <button
-              type="submit"
-              className="absolute end-2.5 bottom-2.5 text-white bg-indigo-500 hover:bg-indigo-500 box-border border border-transparent focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-lg text-xs px-3 py-1.5 focus:outline-none"
-            >
-              Search
-            </button>
-          </div>
-        </div>
-      </form> */}
-
       <Head>
         <title>Modef</title>
       </Head>
@@ -184,7 +132,10 @@ export default function Home() {
                 {truncate(item.nama_project, 33)}
               </div>
             </div>
-            <div className="mt-4 text-sm font-semibold">{item.user.nama}</div>
+            <div className="flex justify-between mt-4 ">
+              <div className="text-sm font-semibold">{item.user.nama}</div>
+              <FontAwesomeIcon icon={faEye} />
+            </div>
           </motion.div>
         ))}
       </div>

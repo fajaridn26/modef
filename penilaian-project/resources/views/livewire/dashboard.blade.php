@@ -33,10 +33,8 @@
                         <div class="card-body">
                             <div class="card-title d-flex align-items-start justify-content-between">
                                 <div class="avatar flex-shrink-0">
-                                    {{-- <img src="../assets/img/icons/unicons/wallet-info.png" alt="Credit Card"
-                                        class="rounded" /> --}}
-                                        <i class="bx bx-checklist"></i>
-                                    </div>
+                                    <img src="../assets/img/icons/Siswa.svg" alt="Credit Card" class="rounded" />
+                                </div>
                             </div>
                             <span class="fw-semibold d-block mb-1">Total Siswa</span>
                             <h3 class="card-title mb-2">{{ $totalSiswa }}</h3>
@@ -48,8 +46,7 @@
                         <div class="card-body">
                             <div class="card-title d-flex align-items-start justify-content-between">
                                 <div class="avatar flex-shrink-0">
-                                    {{-- <img src="../assets/img/icons/unicons/chart-success.png" alt="chart success"
-                                        class="rounded" /> --}}
+                                    <img src="../assets/img/icons/Project.svg" alt="chart success" class="rounded" />
                                 </div>
                             </div>
                             <span class="fw-semibold d-block mb-1">Total Project</span>
@@ -62,10 +59,9 @@
                         <div class="card-body">
                             <div class="card-title d-flex align-items-start justify-content-between">
                                 <div class="avatar flex-shrink-0">
-                                    {{-- <img src="../assets/img/icons/unicons/wallet-info.png" alt="Credit Card"
-                                        class="rounded" /> --}}
+                                    <img src="../assets/img/icons/Belum Dinilai.svg" alt="Credit Card"
+                                        class="rounded" />
                                 </div>
-
                             </div>
                             <span class="fw-semibold d-block mb-1">Belum Dinilai</span>
                             <h3 class="card-title mb-2">{{ $belumDinilai }}</h3>
@@ -77,10 +73,9 @@
                         <div class="card-body">
                             <div class="card-title d-flex align-items-start justify-content-between">
                                 <div class="avatar flex-shrink-0">
-                                    {{-- <img src="../assets/img/icons/unicons/wallet-info.png" alt="Credit Card"
-                                        class="rounded" /> --}}
+                                    <img src="../assets/img/icons/Sudah Dinilai.svg" alt="Credit Card"
+                                        class="rounded" />
                                 </div>
-
                             </div>
                             <span class="fw-semibold d-block mb-1">Sudah Dinilai</span>
                             <h3 class="card-title mb-2">{{ $sudahDinilai }}</h3>
