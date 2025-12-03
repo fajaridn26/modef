@@ -62,7 +62,8 @@
                                         wire:click="lihatFile({{ $project->id }}) "data-bs-toggle="modal"
                                         data-bs-target="#modalLihatFile">Lihat
                                     </a></td>
-                                @if ($project->nilai > 69)
+                                <td><span>{{ $project->nilai }}</span></td>
+                                {{-- @if ($project->nilai > 69)
                                     <td>
                                         <span class="badge bg-label-success fs-6">{{ $project->nilai }}</span>
                                     </td>
@@ -74,7 +75,7 @@
                                     <td>
                                         <span class="badge bg-label-warning fs-6">{{ $project->nilai }}</span>
                                     </td>
-                                @endif
+                                @endif --}}
                                 <td>
                                     <div>
                                         <Button type="button" class="btn btn-secondary" data-bs-toggle="modal"
