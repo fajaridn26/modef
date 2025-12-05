@@ -142,6 +142,8 @@
 <div class="alert alert-danger" role="alert">{{ session('loginError') }}</div>
 @elseif (session()->has('registerSuccess'))
 <div class="alert alert-success" role="alert">{{ session('registerSuccess') }}</div>
+@elseif (session()->has('successReset'))
+<div class="alert alert-success" role="alert">{{ session('successReset') }}</div>
 @endif
 
               <form class="mb-3" action="/login" method="POST">

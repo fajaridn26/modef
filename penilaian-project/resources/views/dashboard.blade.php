@@ -574,4 +574,8 @@
         <!--/ Transactions -->
         {{-- </div> --}}
     </div>
+
+    <script>
+        document.get
+    </script>
 @endsection

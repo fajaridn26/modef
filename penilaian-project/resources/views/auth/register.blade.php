@@ -188,7 +188,7 @@
 
               <p class="text-center">
                 <span>Already have an account?</span>
-                <a href="/login">
+                <a href="{{ route('login') }}">
                   <span>Sign in instead</span>
                 </a>
               </p>

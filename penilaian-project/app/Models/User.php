@@ -48,10 +48,11 @@ class User extends Authenticatable
     public function scopeSearch($query, $search)
     {
         return $query->where('nama', 'like', "%{$search}%")
-                     ->orWhere('email', 'like', "%{$search}%");
+            ->orWhere('email', 'like', "%{$search}%");
     }
 
-    public function projects(){
+    public function projects()
+    {
         return $this->hasMany(Project::class, 'id_user');
     }
 }

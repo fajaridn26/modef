@@ -61,13 +61,16 @@ Route::get('/', [App\Http\Controllers\LoginController::class, 'index'])->name('l
 Route::post('/login', [App\Http\Controllers\LoginController::class, 'authenticate']);
 Route::get('/register', [App\Http\Controllers\RegisterController::class, 'index']);
 Route::post('/register', [App\Http\Controllers\RegisterController::class, 'store']);
+Route::get('/forgot-password', [App\Http\Controllers\ForgotPasswordController::class, 'index'])->name('forgot-password');
+Route::post('/forgot-password', [App\Http\Controllers\ForgotPasswordController::class, 'store'])->name('forgot-password');
+Route::get('/validation-forgot-password/{token}', [App\Http\Controllers\ValidationForgotPasswordController::class, 'index'])->name('validation-forgot-password');
+Route::get('/validation-forgot-password/{token}', [App\Http\Controllers\ValidationForgotPasswordController::class, 'store'])->name('validation-forgot-password');
+Route::post('/validation-forgot-password-act', [App\Http\Controllers\ValidationForgotPasswordController::class, 'changePassword'])->name('validation-forgot-password-act');
 
 // === Protected Routes ===
 Route::middleware('auth')->group(function () {
-    // Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index']);
     Route::get('/dashboard', Dashboard::class);
     Route::get('/siswa', Userlist::class);
-    // Route::get('/penilaian-portofolio', [App\Http\Controllers\PenilaianPortofolioController::class, 'index']);
     Route::get('/project', Project::class);
     Route::get('/penilaian-project', PenilaianProject::class);
     Route::get('/profile', Profile::class)->name('profile');
