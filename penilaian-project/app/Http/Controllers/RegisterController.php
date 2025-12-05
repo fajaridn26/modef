@@ -13,11 +13,16 @@ class RegisterController extends Controller
     }
 
     public function store(Request $request){
+            $customMessage = [
+                'email.unique' => 'Email sudah terdaftar.',
+                'password.min' => 'Password minimal 5 karakter',
+            ];
+
             $validatedData = $request->validate([
                 'nama' => 'required',
                 'email' => 'required|unique:users,email',
                 'password' => 'required|min:5',
-            ]);
+            ], $customMessage);
     
             $validatedData['password'] = Hash::make($validatedData['password']);
     
